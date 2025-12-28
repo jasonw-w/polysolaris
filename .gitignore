@@ -4,7 +4,8 @@ __pycache__/
 *.pyo
 *.pyd
 *.pyo
-
+.agent/
+workflows/
 # Optional: test and tooling caches
 /.pytest_cache/
 /.mypy_cache/

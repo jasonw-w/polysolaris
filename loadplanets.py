@@ -3,19 +3,32 @@ import json
 from vector import Vector
 # from solar_system import SolarSystemSimulation
 class json_loader:
-    def __init__(self, path, solar_sys, G):
+    def __init__(self, path, solar_sys, G, log_path, dt):
         self.json_path = path
         self.planets = []
         self.solar_sys = solar_sys
         self.G = G
-    def planet_class_creator(self, simulate, mass, initial_position, initial_velocity, colour, stable_orbit, e, central_body_id):
+        self.log_path = log_path
+        self.dt = dt
+    def planet_class_creator(self, simulate, mass, initial_position, initial_velocity, colour, stable_orbit, e, central_body_id, body_id, created_bodies):
             if bool(simulate):
+                # Try to find central body in already created bodies first (to get updated velocity/pos)
+                central_body_instance = created_bodies.get(central_body_id)
+                
                 central_body_obj = next(
                     (body for body in self.data['planets'] if body['id']==central_body_id),
                     None
                 )
-                central_body_mass = central_body_obj['mass'] if central_body_obj else 0
-                central_body_position = Vector(*central_body_obj['initial_position']) if central_body_obj else Vector(0, 0, 0)
+
+                if central_body_instance:
+                     central_body_mass = central_body_instance.mass
+                     central_body_position = central_body_instance.position
+                     central_body_velocity = central_body_instance.velocity
+                else:
+                    central_body_mass = central_body_obj['mass'] if central_body_obj else 0
+                    central_body_position = Vector(*central_body_obj['initial_position']) if central_body_obj else Vector(0, 0, 0)
+                    central_body_velocity = Vector(*central_body_obj['initial_velocity']) if central_body_obj else Vector(0, 0, 0)
+                
                 if colour == None:
                     colour = 'black'
                 if not stable_orbit:
@@ -30,7 +43,11 @@ class json_loader:
                                 mass_of_central_body=central_body_mass,
                                 stable_orbit=stable_orbit,
                                 position_of_central_body=central_body_position,
-                                e=e)
+                                velocity_of_central_body=central_body_velocity,
+                                e=e,
+                                log_path=self.log_path,
+                                body_id=body_id,
+                                dt=self.dt)
                 return x
 
     def load_data(self):
@@ -38,18 +55,24 @@ class json_loader:
             data = json.load(f)
             self.data = data
         planets = []
-        for planet in data['planets']:
+        planets = []
+        created_bodies = {}
+        for planet_data in data['planets']:
             planet = self.planet_class_creator(
-                simulate=planet['simulation'],
-                mass=planet['mass'], 
-                initial_position=Vector(*planet['initial_position']), 
-                initial_velocity=Vector(*planet['initial_velocity']),
-                colour = planet['colour'],
-                stable_orbit = bool(planet['create_stable_orbit']),
-                e=planet['eccentricity'],
-                central_body_id=planet['id_of_central_body']
+                simulate=planet_data['simulation'],
+                mass=planet_data['mass'], 
+                initial_position=Vector(*planet_data['initial_position']), 
+                initial_velocity=Vector(*planet_data['initial_velocity']),
+                colour = planet_data['colour'],
+                stable_orbit = bool(planet_data['create_stable_orbit']),
+                e=planet_data['eccentricity'],
+                central_body_id=planet_data['id_of_central_body'],
+                body_id=planet_data['id'],
+                created_bodies=created_bodies
             )
-            planets.append(planet)
+            if planet:
+                planets.append(planet)
+                created_bodies[planet.id] = planet
         return planets
     
     def load_planets(self):

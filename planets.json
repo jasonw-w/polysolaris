@@ -37,15 +37,15 @@
             "simulation" : 1
         },
         {
-            "name" : null,
+            "name" : "Moon",
             "id" : 3,
             "mass" : 2,
-            "initial_position": [-200, -100, 100],
+            "initial_position": [520, 600, 550],
             "initial_velocity" : [0, 1, 0],
             "create_stable_orbit" : 1,
             "eccentricity" : 0.5,
-            "id_of_central_body" : 0,
-            "colour" : "black",
+            "id_of_central_body" : 2,
+            "colour" : "grey",
             "simulation" : 1
         },
         {
