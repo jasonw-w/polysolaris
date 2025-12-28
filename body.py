@@ -18,16 +18,25 @@ class solar_sys_body:
             stable_orbit=False,
             e=0,#eccentricity
             mass_of_central_body=0,
+            position_of_central_body = Vector(0, 0, 0)
         ):
         self.solarsys = solar_system
         self.mass = mass
+        self.mass_of_central_position = position_of_central_body
         self.position = position
         self.r = math.sqrt(sum(x**2 for x in position))
         self.stable_orbit = stable_orbit
-        self.velocity = Vector(*velocity) if stable_orbit == False else Vector (0, 0, 0)
+        self.velocity = Vector(*velocity)
         if self.stable_orbit:
             self.v_circular = math.sqrt(G*mass_of_central_body*((1+e)/(self.r*(1-e))))
-            self.velocity  = Vector (0, self.v_circular, 0)
+            radial = self.position - self.mass_of_central_position
+            radial_norm = radial.normalise()
+            arbitrary = Vector(0, 0, 1)
+            if abs(radial_norm[2]) > 0.9:
+                arbitrary = Vector(1, 0, 0)
+            tangent = radial_norm.cross(arbitrary)
+            tangent_norm = tangent.normalise()
+            self.velocity = tangent_norm*self.velocity
         self.solarsys.add_body(self)
         self.display_size = max(math.log(self.mass, self.display_log_base), self.minimum_display_size)
         self.colour = "black" if colour is None else colour

@@ -14,24 +14,46 @@
         {
             "name" : null,
             "id" : 1,
-            "mass" : 20,
+            "mass" : 3,
             "initial_position": [500, 500, 500],
             "initial_velocity": [0, 1, 0],
             "create_stable_orbit" : 1,
-            "eccentricity" : 0.5,
-            "id_of_central_body" : 0,
-            "colour" : "black"
+            "eccentricity" : 0,
+            "id_of_central_body" : 2,
+            "colour" : "blue"
         },
         {
             "name" : null,
             "id" : 2,
-            "mass" : 20,
-            "initial_position": [800, 800, 800],
+            "mass" : 40,
+            "initial_position": [510, 600, 550],
             "initial_velocity" : [0, 1, 0],
             "create_stable_orbit" : 1,
             "eccentricity" : 0.5,
-            "id_of_central_body" : 0,
+            "id_of_central_body" : 4,
             "colour" : "black"
+        },
+        {
+            "name" : null,
+            "id" : 3,
+            "mass" : 20,
+            "initial_position": [800, 1200, 800],
+            "initial_velocity" : [0, 1, 0],
+            "create_stable_orbit" : 1,
+            "eccentricity" : 0.5,
+            "id_of_central_body" : 4,
+            "colour" : "black"
+        },
+        {
+            "name" : null,
+            "id" : 4,
+            "mass" : 1e-4,
+            "initial_position": [1000, 1000, 1000],
+            "initial_velocity" : [0, 0, 0],
+            "create_stable_orbit" : 0,
+            "eccentricity" : 0.5,
+            "id_of_central_body" : null,
+            "colour" : "yellow"
         }
     ]
 }

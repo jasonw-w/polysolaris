@@ -25,6 +25,7 @@ class SolarSystemSimulation:
             body.draw()
 
     def draw_all(self):
+        self.bodies.sort(key=lambda item: item.position[0])
         self.ax.set_xlim((-self.size/2, self.size/2))
         self.ax.set_ylim((-self.size/2, self.size/2))
         self.ax.set_zlim((-self.size/2, self.size/2))

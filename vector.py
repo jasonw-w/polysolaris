@@ -57,13 +57,30 @@ class Vector:
                 self.y / other,
                 self.z / other
             )
-        
+    
+    def __setitem__(self, index, value):
+        if index == 0:
+            self.x = value
+        elif index == 1:
+            self.y = value
+        elif index == 2:
+            self.z = value
+        else:
+            raise IndexError("There are only 3 component in a vector")
     def get_magnitude(self):
         return math.sqrt(self.x**2 + self.y**2 + self.z**2)
     
     def normalise(self):
         mag = self.get_magnitude()
         return Vector(self.x/mag, self.y/mag, self.z/mag)
+    
+    def cross(self, other):
+        return Vector (
+            self.y*other.z - self.z*other.y,
+            self.z*other.x - self.x-other.z,
+            self.x*other.y - self.y*other.x
+        )
+                                 
 if __name__ == "__main__":
     test = Vector(1,2,3)
     test2 = Vector(2,3,4)

@@ -14,6 +14,7 @@ class json_loader:
             None
         )
         central_body_mass = central_body_obj['mass'] if central_body_obj else 0
+        central_body_position = Vector(*central_body_obj['initial_position']) if central_body_obj else Vector(0, 0, 0)
         if colour == None:
             colour = 'black'
         if not stable_orbit:
@@ -27,6 +28,7 @@ class json_loader:
                         G=self.G,
                         mass_of_central_body=central_body_mass,
                         stable_orbit=stable_orbit,
+                        position_of_central_body=central_body_position,
                         e=e)
         return x
 
