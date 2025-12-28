@@ -24,19 +24,23 @@ class solar_sys_body:
         self.mass = mass
         self.mass_of_central_position = position_of_central_body
         self.position = position
-        self.r = math.sqrt(sum(x**2 for x in position))
         self.stable_orbit = stable_orbit
         self.velocity = Vector(*velocity)
+
         if self.stable_orbit:
-            self.v_circular = math.sqrt(G*mass_of_central_body*((1+e)/(self.r*(1-e))))
             radial = self.position - self.mass_of_central_position
+            r_mag = radial.get_magnitude() or 1e-9
+            self.r = r_mag
+            self.v_circular = math.sqrt(G * mass_of_central_body * ((1 + e) / (self.r * (1 - e))))
             radial_norm = radial.normalise()
             arbitrary = Vector(0, 0, 1)
             if abs(radial_norm[2]) > 0.9:
                 arbitrary = Vector(1, 0, 0)
             tangent = radial_norm.cross(arbitrary)
             tangent_norm = tangent.normalise()
-            self.velocity = tangent_norm*self.velocity
+            self.velocity = tangent_norm * self.v_circular
+        else:
+            self.r = math.sqrt(sum(x**2 for x in position))
         self.solarsys.add_body(self)
         self.display_size = max(math.log(self.mass, self.display_log_base), self.minimum_display_size)
         self.colour = "black" if colour is None else colour
@@ -77,4 +81,5 @@ class solar_sys_body:
             acceleration = force / body.mass
             body.velocity += acceleration*reverse
             reverse = -1
-
+    
+    

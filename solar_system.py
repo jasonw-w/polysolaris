@@ -4,9 +4,10 @@ from body import solar_sys_body
 import itertools
 class SolarSystemSimulation:
 
-    def __init__(self, size, G):
+    def __init__(self, size, G, log_path):
         self.size = size
-        self.bodies = []
+        self.bodies = [],
+        self.log
         self.fig, self.ax = plt.subplots(
             1,
             1,

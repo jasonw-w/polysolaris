@@ -8,29 +8,30 @@ class json_loader:
         self.planets = []
         self.solar_sys = solar_sys
         self.G = G
-    def planet_class_creator(self, mass, initial_position, initial_velocity, colour, stable_orbit, e, central_body_id):
-        central_body_obj = next(
-            (body for body in self.data['planets'] if body['id']==central_body_id),
-            None
-        )
-        central_body_mass = central_body_obj['mass'] if central_body_obj else 0
-        central_body_position = Vector(*central_body_obj['initial_position']) if central_body_obj else Vector(0, 0, 0)
-        if colour == None:
-            colour = 'black'
-        if not stable_orbit:
-            central_body_mass=0
-            e=0
-        x = solar_sys_body(solar_system=self.solar_sys,
-                        mass=mass,
-                        position=initial_position,
-                        velocity=initial_velocity,
-                        colour=colour,
-                        G=self.G,
-                        mass_of_central_body=central_body_mass,
-                        stable_orbit=stable_orbit,
-                        position_of_central_body=central_body_position,
-                        e=e)
-        return x
+    def planet_class_creator(self, simulate, mass, initial_position, initial_velocity, colour, stable_orbit, e, central_body_id):
+            if bool(simulate):
+                central_body_obj = next(
+                    (body for body in self.data['planets'] if body['id']==central_body_id),
+                    None
+                )
+                central_body_mass = central_body_obj['mass'] if central_body_obj else 0
+                central_body_position = Vector(*central_body_obj['initial_position']) if central_body_obj else Vector(0, 0, 0)
+                if colour == None:
+                    colour = 'black'
+                if not stable_orbit:
+                    central_body_mass=0
+                    e=0
+                x = solar_sys_body(solar_system=self.solar_sys,
+                                mass=mass,
+                                position=initial_position,
+                                velocity=initial_velocity,
+                                colour=colour,
+                                G=self.G,
+                                mass_of_central_body=central_body_mass,
+                                stable_orbit=stable_orbit,
+                                position_of_central_body=central_body_position,
+                                e=e)
+                return x
 
     def load_data(self):
         with open (self.json_path) as f:
@@ -39,6 +40,7 @@ class json_loader:
         planets = []
         for planet in data['planets']:
             planet = self.planet_class_creator(
+                simulate=planet['simulation'],
                 mass=planet['mass'], 
                 initial_position=Vector(*planet['initial_position']), 
                 initial_velocity=Vector(*planet['initial_velocity']),

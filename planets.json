@@ -5,55 +5,60 @@
             "id" : 0,
             "mass" : 1e4,
             "initial_position" : [0, 0, 0],
-            "initial_velocity" : [0, 0, 0],
+            "initial_velocity" : [4, 2, 1],
             "create_stable_orbit" : 0,
             "eccentricity" : 0,
             "id_of_central_body" : null,
-            "colour" : "yellow"
+            "colour" : "yellow",
+            "simulation" : 1
         },
         {
-            "name" : null,
+            "name" : "Sun2",
             "id" : 1,
-            "mass" : 3,
+            "mass" : 1e+4,
             "initial_position": [500, 500, 500],
-            "initial_velocity": [0, 1, 0],
-            "create_stable_orbit" : 1,
+            "initial_velocity": [3, 1, 2],
+            "create_stable_orbit" : 0,
             "eccentricity" : 0,
-            "id_of_central_body" : 2,
-            "colour" : "blue"
+            "id_of_central_body" : null,
+            "colour" : "blue",
+            "simulation" : 1
         },
         {
             "name" : null,
             "id" : 2,
-            "mass" : 40,
+            "mass" : 2,
             "initial_position": [510, 600, 550],
             "initial_velocity" : [0, 1, 0],
             "create_stable_orbit" : 1,
-            "eccentricity" : 0.5,
-            "id_of_central_body" : 4,
-            "colour" : "black"
+            "eccentricity" : 0,
+            "id_of_central_body" : 1,   
+            "colour" : "black",
+            "simulation" : 1
         },
         {
             "name" : null,
             "id" : 3,
-            "mass" : 20,
-            "initial_position": [800, 1200, 800],
+            "mass" : 2,
+            "initial_position": [-200, -100, 100],
             "initial_velocity" : [0, 1, 0],
             "create_stable_orbit" : 1,
             "eccentricity" : 0.5,
-            "id_of_central_body" : 4,
-            "colour" : "black"
+            "id_of_central_body" : 0,
+            "colour" : "black",
+            "simulation" : 1
         },
         {
             "name" : null,
             "id" : 4,
-            "mass" : 1e-4,
+            "mass" : 1e+4,
             "initial_position": [1000, 1000, 1000],
             "initial_velocity" : [0, 0, 0],
             "create_stable_orbit" : 0,
             "eccentricity" : 0.5,
             "id_of_central_body" : null,
-            "colour" : "yellow"
+            "colour" : "yellow",
+            "simulation" : 0
         }
     ]
 }

@@ -5,8 +5,9 @@ import itertools
 from solar_system import SolarSystemSimulation
 from loadplanets import json_loader
 G = 1
-solarsys = SolarSystemSimulation(4000, G)
-loader = json_loader(r"planets.json", solarsys, G)
+log_path = r"simulation.txt"
+solarsys = SolarSystemSimulation(4000, G, log_path)
+loader = json_loader(r"solar_system.json", solarsys, G)
 planets = loader.load_data()
 # for planet in planets:
 #     solarsys.add_body(planet)
