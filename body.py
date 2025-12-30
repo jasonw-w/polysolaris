@@ -91,7 +91,7 @@ class solar_sys_body:
                                 f.write(f"{self.id}|{self.position}|{self.velocity}\n")
 
     def move(self):
-            dt = self.dt if self.dt is not None else getattr(self.solarsys, "dt", 0.001)      
+            dt = getattr(self.solarsys, "dt", self.dt)   
             self.position = Vector (
                 self.position[0] + self.velocity[0]*dt,
                 self.position[1] + self.velocity[1]*dt,
@@ -100,9 +100,9 @@ class solar_sys_body:
             if self.counter % 100 == 0:
                 self.position_history.append(self.position)
             self.counter += 1
-
+    
     def acceleration(self, other):
-        dt = self.dt if self.dt is not None else getattr(self.solarsys, "dt", 0.001)
+        dt = getattr(self.solarsys, "dt", self.dt)
         distance = Vector(*other.position) - Vector(*self.position)
         dist_mag = distance.get_magnitude()
         if dist_mag < 1e-9:

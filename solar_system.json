@@ -5,7 +5,7 @@
       "id": 0,
       "mass": 1.9885e7,
       "initial_position": [0, 0, 0],
-      "initial_velocity": [0, 0, 0],
+      "initial_velocity": [25, -75, 0],
       "create_stable_orbit": 0,
       "eccentricity": 0,
       "id_of_central_body": null,

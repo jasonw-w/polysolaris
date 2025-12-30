@@ -1,0 +1,19 @@
+[build-system]
+requires = ['setuptools', 'wheel']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = "solar-system-simulation"
+version = "0.1.0"
+description = "A 3D N-body gravity simulation"
+dependencies = [
+    'matplotlib',
+    'imageio-ffmpeg',
+    'imageio'
+]
+
+[project.scripts]
+sim = "main:main"
+
+[tool.setuptools]
+py-modules = ["main", "body", "loadplanets", "solar_system", "vector"]

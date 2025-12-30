@@ -6,7 +6,12 @@ __pycache__/
 *.pyo
 .agent/
 workflows/
+.vscode/
+build/
+solar_system_simulation.egg-info/
 # Optional: test and tooling caches
 /.pytest_cache/
 /.mypy_cache/
 /.ipynb_checkpoints/
+check_ffmpeg.py
+find_ffmpeg_path.py
