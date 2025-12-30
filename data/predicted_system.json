@@ -1,0 +1,64 @@
+{
+  "planets": [
+    {
+      "name": "Star",
+      "id": 0,
+      "mass": 1,
+      "initial_position": [
+        -1.7687410116195679,
+        -0.5252070426940918,
+        0.189742773771286
+      ],
+      "initial_velocity": [
+        -0.7241607308387756,
+        -1.2397093772888184,
+        -0.35442349314689636
+      ],
+      "create_stable_orbit": 0,
+      "eccentricity": 0,
+      "id_of_central_body": null,
+      "colour": "yellow",
+      "simulation": 1
+    },
+    {
+      "name": "Planet1",
+      "id": 1,
+      "mass": 1,
+      "initial_position": [
+        -0.37862926721572876,
+        0.6980088949203491,
+        -1.366896629333496
+      ],
+      "initial_velocity": [
+        -0.4221569299697876,
+        -0.5056465268135071,
+        -0.5080558061599731
+      ],
+      "create_stable_orbit": 0,
+      "eccentricity": 0,
+      "id_of_central_body": 0,
+      "colour": "blue",
+      "simulation": 1
+    },
+    {
+      "name": "Planet2",
+      "id": 2,
+      "mass": 1,
+      "initial_position": [
+        0.7039443850517273,
+        -0.5784434080123901,
+        1.4205983877182007
+      ],
+      "initial_velocity": [
+        -0.0218430757522583,
+        0.46542632579803467,
+        -2.2039949893951416
+      ],
+      "create_stable_orbit": 0,
+      "eccentricity": 0,
+      "id_of_central_body": 0,
+      "colour": "grey",
+      "simulation": 1
+    }
+  ]
+}
