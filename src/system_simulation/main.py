@@ -14,12 +14,12 @@ count = 0
 G = 1
 # log_path = r"simulation.txt"
 log_path = None
-dt = 1e-7
+dt = 1e-2
 record = False
 quick_sim = False #Barnes-Hut Algorithm
 # json_paths = [r"solar_system.json", r"solar_system2.json"]
 # json_paths = [r"solar_system2.json"]
-json_paths = [r'data\death_spiral.json']
+json_paths = [r'data\predicted_system.json']
 # shift = [Vector(30, 30, 30), Vector(-30, -30, -30)]
 # shift = [Vector(30, 30, 30)]
 shift = [Vector(-3, -3, -3)]
@@ -41,7 +41,7 @@ def main(G, log_path, dt, record, quick_sim, json_paths):
         global count
         count += 1
         if count % 100 == 0:
-            print(count)
+            print(count*100)
         for _ in range(100):
             solarsys.calculate_body_interactions(quick_sim)
             solarsys.update_all(draw=False)
