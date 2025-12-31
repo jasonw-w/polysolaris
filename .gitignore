@@ -5,7 +5,7 @@ __pycache__/
 *.pyd
 *.pyo
 .agent/
-workflows/
+
 .vscode/
 build/
 solar_system_simulation.egg-info/
