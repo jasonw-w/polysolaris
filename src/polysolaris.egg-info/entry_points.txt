@@ -1,6 +1,7 @@
 [console_scripts]
 polysolaris-gen = ThreeBodyProblem.RL_agent.generate_system_json:main
 polysolaris-train = ThreeBodyProblem.train:train
+polysolaris-train-gpu = ThreeBodyProblem.train_paral:train
 sim = system_simulation.main:run
 solar-system-demo = system_simulation.solar_system_demo:run
 system-collision-demo = system_simulation.system_collision_demo:run

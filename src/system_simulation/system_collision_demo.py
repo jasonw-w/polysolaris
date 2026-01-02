@@ -19,18 +19,17 @@ record = False
 quick_sim = False #Barnes-Hut Algorithm
 import os
 # dynamic path finding
-script_dir = os.path.dirname(os.path.abspath(__file__))
-# Data is two levels up from src/system_simulation
-path1 = os.path.join(script_dir, '..', '..', 'data', 'solar_system.json')
-path2 = os.path.join(script_dir, '..', '..', 'data', 'solar_system2.json')
-
+from importlib import resources
+path1 = str(resources.files("system_simulation").joinpath("data/solar_system.json"))
+path2 = str(resources.files("system_simulation").joinpath("data/solar_system2.json"))
 # Safely handle missing second file by duplicating the first if needed
 if not os.path.exists(path2):
     path2 = path1
 
 json_paths = [path1, path2]
 shift = [Vector(-5, -3, -5), Vector(5, 8, 5)]
-def main(G, log_path, dt, record, quick_sim, json_paths):
+def main(G: float, log_path: str, dt: float, record: bool, json_paths: list):
+    quick_sim = False
     solarsys = SolarSystemSimulation(100, G, log_path, dt)
     loader = json_loader(solarsys, G, log_path, dt)
     planets = loader.load_planets(shift, json_paths)

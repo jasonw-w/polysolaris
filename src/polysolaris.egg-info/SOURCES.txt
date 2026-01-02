@@ -11,6 +11,7 @@ src/ThreeBodyProblem/env/batch_quicksim.py
 src/ThreeBodyProblem/env/fast_sim.py
 src/ThreeBodyProblem/env/three_body_gym.py
 src/ThreeBodyProblem/env/three_body_vectorized.py
+src/polysolaris/__init__.py
 src/polysolaris.egg-info/PKG-INFO
 src/polysolaris.egg-info/SOURCES.txt
 src/polysolaris.egg-info/dependency_links.txt
@@ -26,3 +27,11 @@ src/system_simulation/solar_system_demo.py
 src/system_simulation/system_collision_demo.py
 src/system_simulation/test.py
 src/system_simulation/vector.py
+src/system_simulation/data/3_body.json
+src/system_simulation/data/custom_system.json
+src/system_simulation/data/death_spiral.json
+src/system_simulation/data/planets.json
+src/system_simulation/data/predicted_system.json
+src/system_simulation/data/solar_system.json
+src/system_simulation/data/solar_system2.json
+src/system_simulation/data/test.json

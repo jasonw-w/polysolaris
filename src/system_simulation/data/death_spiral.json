@@ -1,0 +1,64 @@
+{
+  "planets": [
+    {
+      "name": "Spiral1",
+      "id": 0,
+      "mass": 1000.0,
+      "initial_position": [
+        10,
+        0,
+        0
+      ],
+      "initial_velocity": [
+        -2,
+        2,
+        0
+      ],
+      "create_stable_orbit": 0,
+      "eccentricity": 0,
+      "id_of_central_body": null,
+      "colour": "red",
+      "simulation": 1
+    },
+    {
+      "name": "Spiral2",
+      "id": 1,
+      "mass": 1000.0,
+      "initial_position": [
+        -5,
+        8.66,
+        0
+      ],
+      "initial_velocity": [
+        -1,
+        -2,
+        0
+      ],
+      "create_stable_orbit": 0,
+      "eccentricity": 0,
+      "id_of_central_body": null,
+      "colour": "red",
+      "simulation": 1
+    },
+    {
+      "name": "Spiral3",
+      "id": 2,
+      "mass": 1000.0,
+      "initial_position": [
+        -5,
+        -8.66,
+        0
+      ],
+      "initial_velocity": [
+        3,
+        0,
+        0
+      ],
+      "create_stable_orbit": 0,
+      "eccentricity": 0,
+      "id_of_central_body": null,
+      "colour": "red",
+      "simulation": 1
+    }
+  ]
+}

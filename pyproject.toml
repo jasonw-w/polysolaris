@@ -17,6 +17,7 @@ dependencies = [
 [project.scripts]
 sim = "system_simulation.main:run"
 polysolaris-train = "ThreeBodyProblem.train:train"
+polysolaris-train-gpu = "ThreeBodyProblem.train_paral:train"
 polysolaris-gen = "ThreeBodyProblem.RL_agent.generate_system_json:main"
 solar-system-demo = "system_simulation.solar_system_demo:run"
 system-collision-demo = "system_simulation.system_collision_demo:run"
@@ -27,3 +28,6 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+system_simulation = ["data/*.json"]

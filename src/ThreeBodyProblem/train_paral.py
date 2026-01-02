@@ -1,10 +1,10 @@
 import torch
 import torch.optim as optim
 import numpy as np
-from env.three_body_vectorized import VectorizedThreeBodyEnv
-from RL_agent.model import Actor_Critic
-lr = 3e-4
-gamma = 0.9
+from ThreeBodyProblem.env.three_body_vectorized import VectorizedThreeBodyEnv
+from ThreeBodyProblem.RL_agent.model import Actor_Critic
+lr = 1e-5
+gamma = 0
 tau = 0.9
 epochs = 10
 batch_size = 256
@@ -26,7 +26,7 @@ agent = Actor_Critic(num_input, num_output).to(device)
 optimizer = optim.AdamW(agent.parameters(), lr=lr)
 for param_group in optimizer.param_groups:
     param_group['initial_lr'] = lr
-scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=75, gamma=0.5, last_epoch=150)
+scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=75, gamma=0.9, last_epoch=150)
 print("start training")
 iterations_per_update = max(1, steps_per_update // num_envs)
 score = 0

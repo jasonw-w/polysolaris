@@ -11,7 +11,7 @@ import time
 import matplotlib.animation as animation
 from .vector import Vector
 count = 0
-G = 1
+G = 1.0
 # log_path = r"simulation.txt"
 log_path = None
 dt = 1e-8
@@ -21,15 +21,15 @@ quick_sim = False #Barnes-Hut Algorithm
 # json_paths = [r"solar_system2.json"]
 import os
 # dynamic path finding
-script_dir = os.path.dirname(os.path.abspath(__file__))
-# Data is two levels up from src/system_simulation
-data_path1 = os.path.join(script_dir, '..', '..', 'data', 'solar_system.json')
+from importlib import resources
+data_path1 = str(resources.files("system_simulation").joinpath("data/solar_system.json"))
 json_paths = [data_path1]
 shift = [Vector(0, 0, 0)]
-def main(G, log_path, dt, record, quick_sim, json_paths):
+def main(G: float, log_path: str, dt: float, record: bool, quick_sim: bool, json_paths: list):
     solarsys = SolarSystemSimulation(100, G, log_path, dt)
     loader = json_loader(solarsys, G, log_path, dt)
     planets = loader.load_planets(shift, json_paths)
+    quick_sim = False
     # for planet in planets:
     #     solarsys.add_body(planet)
     # counter = 0
