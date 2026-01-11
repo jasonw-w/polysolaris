@@ -28,8 +28,7 @@ if not os.path.exists(path2):
 
 json_paths = [path1, path2]
 shift = [Vector(-5, -3, -5), Vector(5, 8, 5)]
-def main(G: float, log_path: str, dt: float, record: bool, json_paths: list):
-    quick_sim = False
+def main(G: float, log_path: str, dt: float, record: bool, quick_sim: bool, json_paths: list):
     solarsys = SolarSystemSimulation(100, G, log_path, dt)
     loader = json_loader(solarsys, G, log_path, dt)
     planets = loader.load_planets(shift, json_paths)
